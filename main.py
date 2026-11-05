@@ -1,8 +1,9 @@
 from compras import Compras
 
-from validacao import validacao_preco, validacao_metodo_de_pagamento, validacao_de_tipo
+from validacao import definicao_preco, definicao_metodo_de_pagamento, definicao_de_tipo
 
-       
+
+
 compras = []
 valor_total = 0
 numero_de_compras = 0
@@ -14,16 +15,17 @@ def executar_menu():
         print("\n")
         print("ESCOLHA UMA OPÇÃO")
         print("1 - adicionar compra")
-        print("2 - visualizar gastos")
-        print("3 - sair")
+        print("2 - excluir compra")
+        print("3 - visualizar gastos")
+        print("4 - sair")
         opcao = input("Digite a opção desejada: ")
 
         if opcao == "1":
-            preco = validacao_preco()
+            preco = definicao_preco()
             print("================================")
-            tipo = validacao_de_tipo()
+            tipo = definicao_de_tipo()
             print("================================")
-            metodo = validacao_metodo_de_pagamento()
+            metodo = definicao_metodo_de_pagamento()
 
             nova_compra = Compras(tipo, metodo, preco)
             compras.append(nova_compra)
@@ -33,7 +35,7 @@ def executar_menu():
 
             print("Compra adicionada com sucesso!")
 
-        if opcao == "2":
+        if opcao == "3":
             for i in range(numero_de_compras):
                 print("===================")
                 print(f"id: {i+1}")
@@ -41,7 +43,7 @@ def executar_menu():
                 print(f"preço: {compras[i].preco}")
                 print(f"Total de gastos: {valor_total}")
 
-        if opcao == "3":
+        if opcao == "4":
             exit()
 
 if __name__ == "__main__":

@@ -1,6 +1,8 @@
 from categorias import categorias, metodos
 
-def validacao_preco():
+
+
+def definicao_preco():
     """função que solicita e valida o preço, para saber se é um numero"""
     while True:
         try:
@@ -16,7 +18,7 @@ def validacao_preco():
             print("preço inválido! digite um valor numérico")
 
 
-def validacao_metodo_de_pagamento():
+def definicao_metodo_de_pagamento():
     """função que solicita e valida o metodo de pagamento"""
 
     for i, metodo in enumerate(metodos, start=1):
@@ -35,7 +37,7 @@ def validacao_metodo_de_pagamento():
         except ValueError:
             print("método inválido! digite um valor numérico")
 
-def validacao_de_tipo():
+def definicao_de_tipo():
     """função que sollicita e valida  a categoria"""
     for i, categoria in enumerate(categorias, start = 1):
         print(f"{i}- {categoria}")
@@ -53,5 +55,26 @@ def validacao_de_tipo():
 
         except ValueError:
             print("categoria inválida! digite um número válido")
+
+def excluir_compra(compras):
+                    
+    for i, compra in enumerate(compras, start=1):
+        print(f"{i}- {compra.tipo}, {compra.metodo_pagamento}, {compra.preco}\n")
+
+        try:
+            indice = int(input("digite o numero da compra que deseja excluir:\n"))
+
+        except ValueError:
+            print("digite um numero valido")
+            return None
+        if (indice >= 1 and indice <= len(compras)):
+            compra_excluida = compras.pop(indice - 1)
+
+            print("compra excluída com sucesso")
+            return compra_excluida
+        else:
+            print("esse numero não tá na lista, tente outro")
+
+        return None
         
     
